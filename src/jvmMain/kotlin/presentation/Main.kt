@@ -1,8 +1,11 @@
+package presentation
+
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.*
 import presentation.ui.screens.CardboardScreen
-import presentation.ui.strings.AppStrings
+
+const val APP_NAME = "Banco Imobiliário"
 
 fun main() = application {
     val windowState = rememberWindowState(
@@ -12,8 +15,7 @@ fun main() = application {
     Window(
         state = windowState,
         onCloseRequest = ::exitApplication,
-        resizable = true,
-        title = AppStrings.APP_NAME,
+        title = APP_NAME,
         icon = painterResource("images/app_icon.png")
     ) {
         CardboardScreen()
