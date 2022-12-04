@@ -6,13 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import domain.model.colors.GameColor
+import presentation.ui.components.Player
 
 @Composable
 fun CardboardScreen() {
-    Image(
-        painter = painterResource("images/gameboard_background.png"),
-        contentDescription = null,
-        modifier = Modifier.fillMaxSize(),
-        contentScale = ContentScale.FillBounds
-    )
+    Player(GameColor.RED)
 }
