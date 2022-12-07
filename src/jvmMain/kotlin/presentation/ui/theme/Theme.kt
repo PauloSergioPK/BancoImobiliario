@@ -8,13 +8,19 @@ import androidx.compose.runtime.compositionLocalOf
 
 @Immutable
 data class AppStrings(
-    val start: String = ""
+    val start: String = "",
+    val vacation: String = "",
+    val jail: String = "",
+    val goToJail: String = "",
 )
 
 private val LocalAppStrings = compositionLocalOf { AppStrings() }
 
 private val portugueseStrings = AppStrings(
-    start = "Inicio"
+    start = "Inicio",
+    vacation = "Férias",
+    jail = "Cadeia",
+    goToJail = "Vá para cadeia"
 )
 
 @Composable

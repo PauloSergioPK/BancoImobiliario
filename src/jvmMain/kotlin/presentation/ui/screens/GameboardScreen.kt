@@ -1,15 +1,62 @@
 package presentation.ui.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import domain.model.colors.GameColor
-import presentation.ui.components.Player
+import domain.model.gameboard.GameboardHouse
+import domain.model.gameboard.GameboardHouseKind
+import domain.model.player.BankAccount
+import domain.model.player.Player
+import presentation.ui.components.GameboardHouseCard
 
 @Composable
 fun CardboardScreen() {
-    Player(GameColor.RED)
+    val gameboardHouse = GameboardHouse(
+        id = "1",
+        players = listOf(
+            Player(
+                name = "joao",
+                bankAccount = BankAccount(
+                    balance = 1000F
+                ),
+                color = GameColor.RED
+            ),
+            Player(
+                name = "joao",
+                bankAccount = BankAccount(
+                    balance = 1000F
+                ),
+                color = GameColor.RED
+            ),
+            Player(
+                name = "joao",
+                bankAccount = BankAccount(
+                    balance = 1000F
+                ),
+                color = GameColor.RED
+            ),
+            Player(
+                name = "joao",
+                bankAccount = BankAccount(
+                    balance = 1000F
+                ),
+                color = GameColor.RED
+            ),
+            Player(
+                name = "joao",
+                bankAccount = BankAccount(
+                    balance = 1000F
+                ),
+                color = GameColor.RED
+            ),
+            Player(
+                name = "joao",
+                bankAccount = BankAccount(
+                    balance = 1000F
+                ),
+                color = GameColor.RED
+            )
+        ),
+        kind = GameboardHouseKind.GoToJail
+    )
+    GameboardHouseCard(gameboardHouse)
 }
