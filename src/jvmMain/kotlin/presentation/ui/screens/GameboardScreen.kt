@@ -12,7 +12,7 @@ import presentation.ui.components.GameboardTable
 @Composable
 fun CardboardScreen() {
     val fakeList = mutableListOf<GameboardHouse>()
-    repeat(44) { index ->
+    repeat(40) { index ->
         fakeList.add(
             GameboardHouse(
                 id = "1",
@@ -21,7 +21,11 @@ fun CardboardScreen() {
                         Player("nome", BankAccount(balance = 1000F), color = GameColor.GREEN)
                     )
                 } else listOf(),
-                kind = GameboardHouseKind.GoToJail
+                kind = GameboardHouseKind.Property(
+                    title = index.toString(),
+                    value = 1000F,
+                    color = GameColor.values().random()
+                )
             )
         )
     }
