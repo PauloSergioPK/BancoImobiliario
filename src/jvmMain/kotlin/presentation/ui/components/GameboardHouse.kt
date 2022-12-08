@@ -31,12 +31,11 @@ fun GameboardHouseCard(
 ) {
     Card(
         shape = RoundedCornerShape(0),
-        elevation = 0.dp
+        elevation = 0.dp,
+        modifier = modifier
     ) {
-        Box(modifier = Modifier.size(100.dp)) {
-            CardBackground(gameboardHouse)
-            CardPlayers(gameboardHouse.players)
-        }
+        CardBackground(gameboardHouse)
+        //CardPlayers(gameboardHouse.players)
     }
 }
 
@@ -78,7 +77,7 @@ private fun CardBackground(gameboardHouse: GameboardHouse) {
     val textColor = if (color.luminance() >= 0.5F) Color.DarkGray else Color.White
 
     Column(
-        modifier = Modifier.background(color).padding(8.dp),
+        modifier = Modifier.fillMaxWidth().background(color).padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -108,7 +107,7 @@ private fun CardPlayers(
 ) {
     LazyHorizontalGrid(
         rows = GridCells.Fixed(3),
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         players.forEach {
