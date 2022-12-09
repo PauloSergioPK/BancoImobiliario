@@ -34,7 +34,7 @@ fun GameboardHouseCard(
         modifier = modifier
     ) {
         CardBackground(gameboardHouse)
-        //CardPlayers(gameboardHouse.players)
+        CardPlayers(gameboardHouse.players)
     }
 }
 
