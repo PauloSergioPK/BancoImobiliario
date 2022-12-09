@@ -104,7 +104,7 @@ private fun CardBackground(gameboardHouse: GameboardHouse) {
             fontSize = 14.sp
         )
 
-        Text(title.uppercase(), style = titleStyle)
+        AutoResizeText(title.uppercase(), style = titleStyle, fontSizeRange = FontSizeRange(min = 12.sp, max = 16.sp), maxLines = 2 )
         if (description.isNotEmpty()) {
             Spacer(modifier = Modifier.height(20.dp))
             Text(description.uppercase(), style = descriptionStyle)
