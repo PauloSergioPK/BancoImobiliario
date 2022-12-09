@@ -53,23 +53,36 @@ private fun CardBackground(gameboardHouse: GameboardHouse) {
         }
 
         is GameboardHouseKind.GoToJail -> {
-            title = AppTheme.strings.goToJail
+            title = AppTheme.strings.goToJailCardTitle
             color = Red700
         }
 
         is GameboardHouseKind.Jail -> {
-            title = AppTheme.strings.jail
+            title = AppTheme.strings.jailCardTitle
             color = LightBlue700
         }
 
         is GameboardHouseKind.Start -> {
-            title = AppTheme.strings.start
+            title = AppTheme.strings.startCardTitle
             color = DarkBlue700
         }
 
         is GameboardHouseKind.Vacation -> {
-            title = AppTheme.strings.vacation
+            title = AppTheme.strings.vacationCardTitle
             color = Yellow700
+        }
+
+        is GameboardHouseKind.LuckyOrUnlucky -> {
+            title = AppTheme.strings.luckyOrUnluckyCardTitle
+            color = Yellow700
+        }
+        is GameboardHouseKind.Profits -> {
+            title = AppTheme.strings.profitsCardTitle
+            color = Green700
+        }
+        is GameboardHouseKind.Tax -> {
+            title = AppTheme.strings.taxCardTitle
+            color = Orange700
         }
     }
 
