@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 
+/** composable get from https://stackoverflow.com/questions/63971569/androidautosizetexttype-in-jetpack-compose **/
 @Composable
 fun AutoResizeText(
     text: String,
