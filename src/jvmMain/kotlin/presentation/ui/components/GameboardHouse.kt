@@ -21,7 +21,6 @@ import domain.model.gameboard.GameboardHouseKind
 import domain.model.player.Player
 import presentation.ui.theme.*
 import presentation.ui.utils.getGameboardHouseCardColorFromGameColor
-import presentation.ui.utils.getPlayerColorFromGameColor
 import java.text.NumberFormat
 
 @Composable

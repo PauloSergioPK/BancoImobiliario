@@ -23,38 +23,42 @@ fun GameboardTable(
     BoxWithConstraints(modifier = Modifier.fillMaxSize().then(modifier)) {
 
         Column(modifier = Modifier.fillMaxSize()) {
+
+            val cardModifier =  Modifier.fillMaxSize().weight(1F)
+
             Row(
-                modifier = Modifier.fillMaxWidth().weight(0.15F),
+                modifier = Modifier.fillMaxWidth().weight(0.1F),
                 verticalAlignment = Alignment.Top,
                 horizontalArrangement = Arrangement.Center
-            ) { topLine.forEach { GameboardHouseCard(it, Modifier.fillMaxHeight().weight(1F)) } }
+            ) { topLine.forEach { GameboardHouseCard(it, cardModifier) } }
 
-            Row(modifier = Modifier.fillMaxSize().weight(1F), horizontalArrangement = Arrangement.SpaceBetween) {
+            Row(modifier = Modifier.fillMaxSize().weight(0.8F), horizontalArrangement = Arrangement.SpaceBetween) {
+                val columnModifier = Modifier.fillMaxHeight().weight(0.112F)
                 Column(
-                    modifier = Modifier.fillMaxHeight().weight(0.15F),
+                    modifier = columnModifier,
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.Center
-                ) { leftLine.forEach { GameboardHouseCard(it, Modifier.weight(0.2F)) } }
+                ) { leftLine.forEach { GameboardHouseCard(it,cardModifier) } }
 
                 Box(
-                    modifier = Modifier.fillMaxHeight().weight(0.7F).background(Color.White),
+                    modifier = Modifier.fillMaxHeight().weight(1F).background(Color.White),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(APP_NAME)
                 }
 
                 Column(
-                    modifier = Modifier.fillMaxHeight().weight(0.15F),
+                    modifier = columnModifier,
                     horizontalAlignment = Alignment.End,
                     verticalArrangement = Arrangement.Center
-                ) { rightLine.forEach { GameboardHouseCard(it, Modifier.weight(0.2F)) } }
+                ) { rightLine.forEach { GameboardHouseCard(it,cardModifier) } }
             }
 
             Row(
-                modifier = Modifier.fillMaxWidth().weight(0.15F),
+                modifier = Modifier.fillMaxWidth().weight(0.1F),
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.Center
-            ) { bottomLine.forEach { GameboardHouseCard(it, Modifier.fillMaxHeight().weight(1F)) } }
+            ) { bottomLine.forEach { GameboardHouseCard(it,cardModifier) } }
         }
     }
 }

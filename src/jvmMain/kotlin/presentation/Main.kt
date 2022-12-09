@@ -13,14 +13,13 @@ const val APP_NAME = "Banco Imobiliário"
 fun main() = application {
     val windowState = rememberWindowState(
         position = WindowPosition(Alignment.Center),
-        size = DpSize(1000.dp, 1000.dp)
+        size = DpSize(1400.dp, 1000.dp)
     )
     Window(
         state = windowState,
         onCloseRequest = ::exitApplication,
         title = APP_NAME,
         icon = painterResource("images/app_icon.png"),
-        resizable = false
     ) {
         AppTheme {
             CardboardScreen()
