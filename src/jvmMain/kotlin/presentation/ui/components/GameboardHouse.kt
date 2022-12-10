@@ -64,7 +64,7 @@ private fun CardBackground(gameboardHouse: GameboardHouse) {
 
         is GameboardHouseKind.Start -> {
             title = AppTheme.strings.startCardTitle
-            color = DarkBlue700
+            color = Orange700
         }
 
         is GameboardHouseKind.Vacation -> {
