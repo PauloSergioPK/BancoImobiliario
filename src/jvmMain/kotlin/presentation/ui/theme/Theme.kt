@@ -14,7 +14,10 @@ data class AppStrings(
     val goToJailCardTitle: String = "",
     val luckyOrUnluckyCardTitle: String = "",
     val profitsCardTitle: String = "",
-    val taxCardTitle: String = ""
+    val taxCardTitle: String = "",
+    val playersQuantityHint: String = "",
+    val playersQuantityError: String = "",
+    val confirm: String = ""
 )
 
 private val LocalAppStrings = compositionLocalOf { AppStrings() }
@@ -26,7 +29,10 @@ private val portugueseStrings = AppStrings(
     goToJailCardTitle = "Vá para cadeia",
     luckyOrUnluckyCardTitle = "Sorte ou Revés",
     profitsCardTitle = "Lucros ou Dividendos",
-    taxCardTitle = "Imposto de Renda"
+    taxCardTitle = "Imposto de Renda",
+    playersQuantityHint = "Digite a quantidade de participantes",
+    playersQuantityError = "Quantidade de participantes invalido",
+    confirm = "Confirmar"
 )
 
 @Composable

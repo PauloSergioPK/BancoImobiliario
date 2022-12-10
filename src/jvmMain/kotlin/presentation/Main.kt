@@ -4,9 +4,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.*
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
+import androidx.compose.ui.window.application
+import androidx.compose.ui.window.rememberWindowState
 import data.repository.GameboardRepositoryImpl
 import domain.repository.GameboardRepository
+import domain.usecase.AddPlayersInGameboardUseCase
+import domain.usecase.AddPlayersInGameboardUseCaseImpl
 import domain.usecase.GetInitialGameboardUseCase
 import domain.usecase.GetInitialGameboardUseCaseImpl
 import presentation.ui.screens.CardboardScreen
@@ -18,7 +23,11 @@ const val APP_NAME = "Banco Imobiliário"
 
 private val repository: GameboardRepository = GameboardRepositoryImpl()
 private val getInitialGameboardUseCase: GetInitialGameboardUseCase = GetInitialGameboardUseCaseImpl(repository)
-private val gameboardViewModel = GameboardViewModel(getInitialGameboardUseCase)
+private val addPlayersInGameboardUseCase: AddPlayersInGameboardUseCase = AddPlayersInGameboardUseCaseImpl()
+private val gameboardViewModel = GameboardViewModel(
+    getInitialGameboardUseCase,
+    addPlayersInGameboardUseCase
+)
 
 fun main() = application {
     gameboardViewModel.processEvent(GameboardContract.Events.InitializeGameboard)
