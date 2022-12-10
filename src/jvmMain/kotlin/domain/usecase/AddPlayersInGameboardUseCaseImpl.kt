@@ -12,6 +12,7 @@ class AddPlayersInGameboardUseCaseImpl: AddPlayersInGameboardUseCase {
         for(i in 0 until  quantity) {
             players.add(
                 Player(
+                    id = i,
                     bankAccount = BankAccount(200F),
                     color = GameColor.values()[i]
                 )
