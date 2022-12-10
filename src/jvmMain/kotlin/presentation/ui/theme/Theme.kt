@@ -17,7 +17,9 @@ data class AppStrings(
     val taxCardTitle: String = "",
     val playersQuantityHint: String = "",
     val playersQuantityError: String = "",
-    val confirm: String = ""
+    val confirm: String = "",
+    val turnPlayerPlaceholder: String = "",
+    val rollDices: String = "",
 )
 
 private val LocalAppStrings = compositionLocalOf { AppStrings() }
@@ -32,7 +34,9 @@ private val portugueseStrings = AppStrings(
     taxCardTitle = "Imposto de Renda",
     playersQuantityHint = "Digite a quantidade de participantes",
     playersQuantityError = "Quantidade de participantes invalido",
-    confirm = "Confirmar"
+    confirm = "Confirmar",
+    turnPlayerPlaceholder = "Vez do jogador: ",
+    rollDices = "Jogar dados"
 )
 
 @Composable

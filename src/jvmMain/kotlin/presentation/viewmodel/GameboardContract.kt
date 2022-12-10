@@ -1,6 +1,7 @@
 package presentation.viewmodel
 
 import domain.model.gameboard.Gameboard
+import domain.model.player.Player
 
 object GameboardContract {
 
@@ -11,7 +12,9 @@ object GameboardContract {
     }
 
     sealed interface Effects {
-
+        data class ShowTurnPlayerDialog(
+            val player: Player
+        ): Effects
     }
 
     data class State(

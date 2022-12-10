@@ -9,6 +9,7 @@ import domain.repository.GameboardRepository
 class GameboardRepositoryImpl : GameboardRepository {
     override fun getInitialGameboard(): Gameboard {
         return Gameboard(
+            currentTurnPlayer = null,
             houses = listOf(
                 GameboardHouse(kind = GameboardHouseKind.Start(bonus = 200F)),
                 GameboardHouse(kind = GameboardHouseKind.Property(title = "Leblon", 100F, GameColor.LIGHT_PURPLE)),
