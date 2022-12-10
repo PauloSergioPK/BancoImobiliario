@@ -35,7 +35,7 @@ fun CardboardScreen(viewModel: GameboardViewModel) {
         }
     }
 
-    GameboardTable(uiState.gameboard)
+    GameboardTable(uiState.gameboard.value)
     PlayersQuantityDialog(
         isPlayersQuantityLayoutVisible = isPlayersQuantityLayoutVisible,
         isPlayersQuantityErrorVisible = isPlayersQuantityErrorVisible,
@@ -46,7 +46,17 @@ fun CardboardScreen(viewModel: GameboardViewModel) {
     )
 
     turnPlayer?.let {
-        TurnPlayerDialog(player = turnPlayer!!, onRollDicesClicked = { turnPlayer = null })
+        TurnPlayerDialog(
+            player = turnPlayer!!,
+            onRollDicesClicked = {
+                viewModel.processEvent(
+                    GameboardContract.Events.AdvancePlayerInGameboard(
+                        player = turnPlayer!!,
+                        housesCount = it
+                    )
+                )
+            }
+        )
     }
 }
 

@@ -1,10 +1,13 @@
 package presentation.viewmodel
 
+import androidx.compose.runtime.mutableStateOf
 import domain.usecase.AddPlayersInGameboardUseCase
 import domain.usecase.GetInitialGameboardUseCase
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class GameboardViewModel(
@@ -22,7 +25,7 @@ class GameboardViewModel(
             is GameboardContract.Events.InitializeGameboard -> {
                 uiState.update {
                     GameboardContract.State(
-                        gameboard = getInitialGameboardUseCase.execute(),
+                        gameboard = mutableStateOf(getInitialGameboardUseCase.execute()),
                         isPlayersQuantityLayoutVisible = true
                     )
                 }
@@ -44,17 +47,25 @@ class GameboardViewModel(
 
             is GameboardContract.Events.ConfirmPlayersQuantity -> {
                 val updatedGameboard = addPlayersInGameboardUseCase.execute(
-                    currentState.gameboard,
+                    currentState.gameboard.value,
                     currentState.playersQuantityInput
                 )
                 uiState.update {
                     it.copy(
-                        gameboard = updatedGameboard,
+                        gameboard = mutableStateOf(updatedGameboard),
                         isPlayersQuantityLayoutVisible = false
                     )
                 }
                 updatedGameboard.getCurrentTurnPlayer()?.let {
                     setEffect(GameboardContract.Effects.ShowTurnPlayerDialog(it))
+                }
+            }
+
+            is GameboardContract.Events.AdvancePlayerInGameboard -> {
+                val updatedGameboard = currentState.gameboard.value
+                for (i in 0 until event.housesCount) {
+                    updatedGameboard.advancePlayerInGameboard(event.player.id,1)
+                    uiState.update { it.copy(gameboard = mutableStateOf(updatedGameboard)) }
                 }
             }
         }

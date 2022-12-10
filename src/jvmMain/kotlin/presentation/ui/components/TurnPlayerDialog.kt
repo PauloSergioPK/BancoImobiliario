@@ -2,7 +2,10 @@ package presentation.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -15,11 +18,11 @@ import domain.model.player.Player
 import presentation.ui.theme.AppTheme
 
 @Composable
-fun TurnPlayerDialog(player: Player, onRollDicesClicked: () -> Unit) {
+fun TurnPlayerDialog(player: Player, onRollDicesClicked: (Int) -> Unit) {
     val coroutineScope = rememberCoroutineScope()
     var isDicesVisible by rememberSaveable { mutableStateOf(false) }
 
-    BoxWithConstraints(Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+    BoxWithConstraints(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         TranslucentBackground()
         val cardWidth = (maxWidth.value * 0.3).dp
         Card(shape = RoundedCornerShape(8), modifier = Modifier.width(cardWidth)) {
@@ -37,7 +40,9 @@ fun TurnPlayerDialog(player: Player, onRollDicesClicked: () -> Unit) {
                 )
                 Spacer(Modifier.height(16.dp))
                 Button(
-                    onClick = onRollDicesClicked,
+                    onClick = {
+                        onRollDicesClicked.invoke(13)
+                    },
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
