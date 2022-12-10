@@ -7,7 +7,6 @@ import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -20,7 +19,7 @@ import presentation.ui.theme.AppTheme
 @Composable
 fun TurnPlayerDialog(player: Player, onRollDicesClicked: (Int) -> Unit) {
     val coroutineScope = rememberCoroutineScope()
-    var isDicesVisible by rememberSaveable { mutableStateOf(false) }
+    var isDicesVisible by remember { mutableStateOf(false) }
 
     BoxWithConstraints(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         TranslucentBackground()

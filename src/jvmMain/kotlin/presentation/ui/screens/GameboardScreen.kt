@@ -1,7 +1,6 @@
 package presentation.ui.screens
 
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import domain.model.player.Player
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.consumeAsFlow
@@ -21,7 +20,7 @@ fun CardboardScreen(viewModel: GameboardViewModel) {
     val playersQuantityInput = uiState.playersQuantityInput
     val isPlayersQuantityErrorVisible = uiState.isPlayersQuantityErrorVisible
     val isConfirmPlayersButtonVisible = uiState.isConfirmPlayersButtonVisible
-    var turnPlayer: Player? by rememberSaveable { mutableStateOf(null) }
+    var turnPlayer: Player? by remember { mutableStateOf(null) }
 
     val coroutineScope = rememberCoroutineScope()
 

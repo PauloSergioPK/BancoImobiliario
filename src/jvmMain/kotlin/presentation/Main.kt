@@ -1,5 +1,7 @@
 package presentation
 
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.DpSize
@@ -14,6 +16,7 @@ import domain.usecase.AddPlayersInGameboardUseCase
 import domain.usecase.AddPlayersInGameboardUseCaseImpl
 import domain.usecase.GetInitialGameboardUseCase
 import domain.usecase.GetInitialGameboardUseCaseImpl
+import kotlinx.coroutines.*
 import presentation.ui.screens.CardboardScreen
 import presentation.ui.theme.AppTheme
 import presentation.viewmodel.GameboardContract
@@ -24,13 +27,19 @@ const val APP_NAME = "Banco Imobiliário"
 private val repository: GameboardRepository = GameboardRepositoryImpl()
 private val getInitialGameboardUseCase: GetInitialGameboardUseCase = GetInitialGameboardUseCaseImpl(repository)
 private val addPlayersInGameboardUseCase: AddPlayersInGameboardUseCase = AddPlayersInGameboardUseCaseImpl()
-private val gameboardViewModel = GameboardViewModel(
-    getInitialGameboardUseCase,
-    addPlayersInGameboardUseCase
-)
 
 fun main() = application {
-    gameboardViewModel.processEvent(GameboardContract.Events.InitializeGameboard)
+    val coroutineScope = rememberCoroutineScope()
+
+    val viewModel = remember {
+        GameboardViewModel(
+            getInitialGameboardUseCase,
+            addPlayersInGameboardUseCase,
+            coroutineScope
+        )
+    }
+
+    viewModel.processEvent(GameboardContract.Events.InitializeGameboard)
 
     val windowState = rememberWindowState(
         position = WindowPosition(Alignment.Center),
@@ -43,7 +52,7 @@ fun main() = application {
         icon = painterResource("images/app_icon.png"),
     ) {
         AppTheme {
-            CardboardScreen(gameboardViewModel)
+            CardboardScreen(viewModel)
         }
     }
 }
